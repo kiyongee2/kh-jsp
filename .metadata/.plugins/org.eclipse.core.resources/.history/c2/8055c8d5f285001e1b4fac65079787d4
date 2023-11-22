@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>todo list</title>
+<link rel="stylesheet" href="../resources/css/bootstrap.css">
+</head>
+<body>
+	<div class="container bg-warning shadow mx-auto mt-5 p-5 w-75">
+		<h2>My ToDo App</h2>
+		<hr>
+			<input id="item" type="text" placeholder="할일을 입력하세요">
+			<button type="button" onclick="addItem()">할 일 추가</button>
+		<hr>
+		<ul id="todolist"></ul>
+	</div>
+</body>
+</html>

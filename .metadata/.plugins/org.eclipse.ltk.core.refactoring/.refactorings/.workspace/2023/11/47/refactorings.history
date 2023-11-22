@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;jwbook/src/main/webapp/resources/js/bootstrap.js&apos;" deleteContents="false" description="Delete resource &apos;jwbook/src/main/webapp/resources/js/bootstrap.js&apos;" element1="/jwbook/src/main/webapp/resources/js/bootstrap.js" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1700433581608"/>
+</session>
