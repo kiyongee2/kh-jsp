@@ -123,8 +123,8 @@ public class AddrBookDAO {
 	public void updateAddrBook(AddrBook addrBook) {
 		try {
 			conn= JDBCUtil.getConnection();
-			String sql = "UPDATE addrbook SET username = ?, tel = ?, email = ?, "
-					     + "gender = ? WHERE num = ? ";
+			String sql = "UPDATE addrbook SET username = ?, tel = ?, "
+					     + "email = ?, gender = ? WHERE num = ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, addrBook.getUsername());
 			pstmt.setString(2, addrBook.getTel());

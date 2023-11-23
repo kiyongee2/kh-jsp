@@ -13,8 +13,18 @@
 	<div id="container">
 		<h2>주소 목록</h2>
 		<hr>
+		<% 
+			String sessionId = null;
+		    if((String)session.getAttribute("sessionId") != null){
+		    	sessionId = (String)session.getAttribute("sessionId");
+		    }else{
+		    	out.println("<script>");
+		    	out.println("alert('로그인을 해주세요')");
+		    	out.println("location.href='loginForm.jsp'");
+		    	out.println("</script>");
+		    }
+		 %>
 		<p>
-			<a href="./addrForm.jsp">[주소 추가]</a>&nbsp;
 			<a href="../index.jsp">[로그 아웃]</a>
 		</p>
 	    <table id="tbl_list">

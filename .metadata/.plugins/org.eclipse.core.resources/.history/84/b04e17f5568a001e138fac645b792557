@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	//30분 - 30*60=1800초
+	int time = session.getMaxInactiveInterval();
+    out.println(time + "초" + "<br>");
+    
+	time = session.getMaxInactiveInterval() / 60;
+	out.println(time + "분" + "<br>");
+	
+
+%>
