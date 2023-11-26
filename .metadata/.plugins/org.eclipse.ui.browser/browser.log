@@ -7,3 +7,11 @@
 11월 24, 2023 06:05:28.37 NEW SESSION
 11월 24, 2023 06:05:28.39 [7652:14120:1124/060528.372:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
 11월 24, 2023 06:15:05.09 [11528:8836:1124/061505.091:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 24, 2023 08:29:51.81 [5764:2320:1124/082951.811:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+11월 25, 2023 09:18:29.47 NEW SESSION
+11월 25, 2023 09:18:29.49 [8612:14300:1125/091829.475:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+11월 26, 2023 09:04:20.94 NEW SESSION
+11월 26, 2023 09:04:20.96 [7252:13244:1126/090420.933:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 26, 2023 10:10:14.97 [7252:13244:1126/101014.978:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2

@@ -13,7 +13,7 @@
 <h3>세션 유효시간 변경 후</h3>
 <%
 	//세션 유효시간을 5분으로 설정함
-	session.setMaxInactiveInterval(5*60);
+	session.setMaxInactiveInterval(1*60);
 
     time = session.getMaxInactiveInterval();
 	out.println(time + "초" + "<br>");

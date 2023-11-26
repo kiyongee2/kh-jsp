@@ -138,4 +138,30 @@ public class AddrBookDAO {
 			JDBCUtil.close(conn, pstmt);
 		}
 	}
+	
+	//세션 발급할 이름 리턴
+	public String getUserName(String email) {
+		conn = JDBCUtil.getConnection();
+		String name = null;
+		String sql = "SELECT * From addrbook WHERE email = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				name = rs.getString("username");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return name;
+	}
 }
+
+
+
+
+
+

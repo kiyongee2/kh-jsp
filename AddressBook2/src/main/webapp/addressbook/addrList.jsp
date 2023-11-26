@@ -24,9 +24,11 @@
 		    	out.println("</script>");
 		    }
 		 %>
-		<p>
-			<a href="../index.jsp">[로그 아웃]</a>
-		</p>
+		<div class="logout">
+			<a href="logout.jsp">
+				<span class="accent">(<%=session.getAttribute("sessionName") %> 님)</span> [로그 아웃]
+			</a>
+		</div>
 	    <table id="tbl_list">
 	    	<tr>
 	    	    <th>번호</th>

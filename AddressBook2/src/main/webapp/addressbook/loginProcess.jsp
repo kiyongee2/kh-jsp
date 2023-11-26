@@ -11,9 +11,11 @@
 <%
 	String email = request.getParameter("email");
 	boolean result = abDAO.checkLogin(email);
+	String name = abDAO.getUserName(email);
 	
 	if(result){
 		session.setAttribute("sessionId", email);   //세션 발급(이름 - sessionId)
+		session.setAttribute("sessionName", name);
 	}else{
 		out.println("<script>");
 		out.println("alert('이메일이 일치하지 않습니다.')");

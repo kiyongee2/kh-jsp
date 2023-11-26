@@ -10,7 +10,11 @@
 <jsp:setProperty property="email" name="addrBook"/>
 <jsp:setProperty property="gender" name="addrBook"/>
 <jsp:useBean id="abDAO" class="addressbook.AddrBookDAO" scope="application" />
-<% abDAO.addAddrBook(addrBook); //주소 추가%>
+<% 
+	abDAO.addAddrBook(addrBook); //주소 추가
+	//주소 등록후 자동 로그인
+	session.setAttribute("sessionId", addrBook.getEmail());
+%>
 
 <div id="container">
 	<h2>등록 내용</h2>

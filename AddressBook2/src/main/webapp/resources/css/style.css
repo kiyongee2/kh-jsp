@@ -14,6 +14,8 @@ a{text-decoration: none; color: #222;}
 #tbl_reg select{padding: 5px;}
 
 /* 목록 스타일 */
+#container .logout{text-align: right; margin: 10px 10%;}
+span.accent{color: blue;}
 #tbl_list{width: 800px; margin: 0 auto;}
 #tbl_list, th, td{border: 1px solid #ccc;
   border-collapse: collapse; text-align: center;}

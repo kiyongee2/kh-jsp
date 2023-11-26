@@ -3,5 +3,5 @@
 <%
 	session.invalidate();  //모든 세션 삭제
 
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("../index.jsp");
 %>

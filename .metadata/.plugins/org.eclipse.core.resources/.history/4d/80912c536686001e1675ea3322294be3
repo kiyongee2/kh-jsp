@@ -1,8 +1,0 @@
--- h2와 연동
-CREATE TABLE student(
-    id       INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR2(20),
-    univ     VARCHAR2(40),
-    birth    DATE,
-    email    VARCHAR2(40)
-);
