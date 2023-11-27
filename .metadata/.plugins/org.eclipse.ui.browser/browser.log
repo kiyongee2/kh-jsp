@@ -18,3 +18,6 @@
 
 11월 28, 2023 05:56:08.20 NEW SESSION
 11월 28, 2023 05:56:08.21 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+
+11월 28, 2023 07:58:20.97 NEW SESSION
+11월 28, 2023 07:58:20.98 [10484:8328:1128/075820.970:ERROR:persistent_memory_allocator.cc(890)] Corruption detected in shared-memory segment.

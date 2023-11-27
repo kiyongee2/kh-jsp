@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form action="errorProcess.jsp" method="post">
+		<p>숫자1: <input type="text" name="num1">
+		<p>숫자2: <input type="text" name="num2"> 
+		<P><input type="submit" value="나누기">
+	</form>
 </body>
 </html>
