@@ -15,3 +15,6 @@
 11월 26, 2023 09:04:20.94 NEW SESSION
 11월 26, 2023 09:04:20.96 [7252:13244:1126/090420.933:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
 11월 26, 2023 10:10:14.97 [7252:13244:1126/101014.978:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+11월 28, 2023 05:56:08.20 NEW SESSION
+11월 28, 2023 05:56:08.21 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.

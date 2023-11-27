@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#content{width: 80%; margin: 0 auto; text-align: center;}
+a{text-decoration: none;}
+ul li{list-style: none;}
+
+/* 학생 목록 스타일*/
+table{margin: 0 auto; border-collapse: collapse;}
+table th, td{
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+/* 학생 등록 스타일 */
+h2{padding-left: 20px;}
+form{width: 360px; margin: 0 auto;}
+ul li{margin: 10px;}
+ul li label{width: 80px; float: left;}
+ul li input.birth{width: 166px;}
