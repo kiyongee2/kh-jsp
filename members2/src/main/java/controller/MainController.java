@@ -49,9 +49,9 @@ public class MainController extends HttpServlet {
 		
 		//command 패턴으로 url 설정하기
 		String uri = request.getRequestURI();
+		//System.out.println(uri);
 		String command = uri.substring(uri.lastIndexOf('/'));
-		System.out.println(uri);
-		System.out.println(uri.lastIndexOf('/'));
+		//System.out.println(uri.lastIndexOf('/'));
 		
 		//이동할 페이지
 		String nextPage = null;
