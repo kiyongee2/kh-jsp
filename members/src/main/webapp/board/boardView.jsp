@@ -44,6 +44,11 @@
 	           				</td>
 						</tr>
 						<tr>
+							<td>
+								<a href="/down.do?filename=${board.filename}">파일다운</a>
+							</td>
+						</tr>
+						<tr>
 							<td><c:out value="조회수: ${board.hit}" /></td>
 						</tr>
 						<tr>
