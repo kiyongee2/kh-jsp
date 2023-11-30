@@ -20,6 +20,8 @@ import board.Board;
 import board.BoardDAO;
 import member.Member;
 import member.MemberDAO;
+import reply.Reply;
+import reply.ReplyDAO;
 
 @WebServlet("*.do")
 public class MainController extends HttpServlet {
@@ -27,10 +29,12 @@ public class MainController extends HttpServlet {
 	
 	MemberDAO memberDAO;
 	BoardDAO boardDAO;
+	ReplyDAO replyDAO;
        
     public MainController() {
         memberDAO = new MemberDAO();
         boardDAO = new BoardDAO();
+        replyDAO = new ReplyDAO();
     }
 	/*public void init(ServletConfig config) throws ServletException {
 		memberDAO = new MemberDAO();  //객체 생성
@@ -241,33 +245,78 @@ public class MainController extends HttpServlet {
 			boardDAO.addBoard(board);
 		}else if(command.equals("/boardView.do")) {
 			int bno = Integer.parseInt(request.getParameter("bno"));
+			//게시글 1개 보기
 			Board board = boardDAO.getBoard(bno);
+			//댓글 목록 보기
+			List<Reply> replyList = replyDAO.getReplyList(bno);
+			
 			request.setAttribute("board", board);
+			request.setAttribute("replyList", replyList);
 			nextPage = "/board/boardView.jsp";
 		}else if(command.equals("/deleteBoard.do")) {
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			boardDAO.deleteBoard(bno);
 		}else if(command.equals("/updateBoardForm.do")) {
 			int bno = Integer.parseInt(request.getParameter("bno"));
+			//수정할 게시글 가져오기
 			Board board = boardDAO.getBoard(bno);
 			request.setAttribute("board", board);
 			nextPage = "/board/updateBoardForm.jsp";
 		}else if(command.equals("/updateBoard.do")) {
 			int bno = Integer.parseInt(request.getParameter("bno"));
-			
+			//글쓴이는 넘겨 받지 않아도 가능함
 			Board board = new Board();
 			board.setBno(bno);
 			board.setTitle(request.getParameter("title"));
 			board.setContent(request.getParameter("content"));
 			
+			//게시글 수정 처리
 			boardDAO.updateBoard(board);
 		}
 		
+		//댓글
+		if(command.equals("/insertreply.do")) {
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			String rcontent = request.getParameter("rcontent");
+			String replyer = request.getParameter("replyer");
+			
+			Reply reply = new Reply();
+			reply.setBno(bno);
+			reply.setRcontent(rcontent);
+			reply.setReplyer(replyer);
+			
+			replyDAO.insertReply(reply);
+		}else if(command.equals("/deletereply.do")) {
+			int rno = Integer.parseInt(request.getParameter("rno"));
+			
+			replyDAO.deleteReply(rno);
+		}else if(command.equals("/updateReplyform.do")) {
+			int rno = Integer.parseInt(request.getParameter("rno"));
+			Reply reply = replyDAO.getReply(rno);
+			
+			request.setAttribute("reply", reply);
+			
+			nextPage = "/board/updateReplyform.jsp";
+		}else if(command.equals("/updatereply.do")) {
+			int rno = Integer.parseInt(request.getParameter("rno"));
+			String rcontent = request.getParameter("rcontent");
+			//replyer는 넘겨 받지 않아도 가능함
+			
+			Reply reply = new Reply();
+			reply.setRno(rno);
+			reply.setRcontent(rcontent);
+			//댓글 수정처리
+			replyDAO.updateReply(reply);
+		}
+		
 		//경로 요청 > 페이지 이동
-		//redirect와 forward로 분기
 		if(command.equals("/addBoard.do") || command.equals("/deleteBoard.do")
 				|| command.equals("/updateBoard.do")) {
 			response.sendRedirect("/boardList.do");
+		}else if(command.equals("/insertreply.do") || command.equals("/deletereply.do")
+				|| command.equals("/updatereply.do")) {
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			response.sendRedirect("/boardView.do?bno=" + bno);
 		}else {
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher(nextPage);

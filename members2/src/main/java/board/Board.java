@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 public class Board implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	
 	private int bno;
 	private String title;
