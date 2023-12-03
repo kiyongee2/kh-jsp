@@ -90,7 +90,7 @@ public class MemberDAO {
 	}
 	
 	//로그인 체크
-	public boolean checkLogin(Member member) {
+	public Member checkLogin(Member member) {
 		conn = JDBCUtil.getConnection();
 		String sql = "SELECT * FROM member WHERE "
 				+ "id = ? and passwd = ?";
@@ -100,14 +100,14 @@ public class MemberDAO {
 			pstmt.setString(2, member.getPasswd());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return true;
+				member.setName(rs.getString("name"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(conn, pstmt, rs);
 		}
-		return false;
+		return member;
 	}
 	
 	//회원 삭제
@@ -145,8 +145,29 @@ public class MemberDAO {
 		}
 	}
 	
+	//id 중복 체크
+	public boolean duplicatedID(String id) {
+		boolean result = false;
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT DECODE(count(*), 1, 'true', 'false') as result "
+					+ "FROM member WHERE id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getBoolean("result");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return result;
+	}
+	
 	//아이디로 세션 이름 가져오기
-	public String getNameById(String id) {
+	/*public String getNameById(String id) {
 		conn = JDBCUtil.getConnection();
 		String name = null;
 		String sql = "SELECT * From member WHERE id = ?";
@@ -163,5 +184,5 @@ public class MemberDAO {
 			JDBCUtil.close(conn, pstmt, rs);
 		}
 		return name;
-	}
+	}*/
 }

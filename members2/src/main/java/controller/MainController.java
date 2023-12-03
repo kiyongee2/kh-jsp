@@ -66,19 +66,21 @@ public class MainController extends HttpServlet {
 		//출력 스트림 객체 생성
 		PrintWriter out = response.getWriter();
 		
-		if(command.equals("/index.do")) {
+		if(command.equals("/main.do")) {
 			//게시글 가져오기
 			List<Board> boardList = boardDAO.getBoardList();
 			//int size = boardList.size(); //게시글의 총수
 			//System.out.println("총게시글: " + size);
-			
+		
 			//최신글 3개를 담은 배열 생성
-			Board[] boardArray = {boardList.get(0), boardList.get(1), 
-					boardList.get(2)};
-			
-			//모델 생성
-			request.setAttribute("boardList", boardArray);
+			if(boardList.size() > 3) {
+				Board[] newBoards = {boardList.get(0), boardList.get(1), boardList.get(2)};
+								
+				//모델 생성
+				request.setAttribute("boardList", newBoards);
+			}
 			nextPage = "/main.jsp";
+			
 		}else if(command.equals("/memberList.do")) {
 			List<Member> memberList = memberDAO.getMemberList();
 			request.setAttribute("memberList", memberList);
@@ -96,6 +98,10 @@ public class MainController extends HttpServlet {
 			
 			//db에 저장
 			memberDAO.addMember(member);
+			//회원 가입후 자동 로그인
+			session.setAttribute("sessionId", member.getId());
+			session.setAttribute("sessionName", member.getName());
+			
 			nextPage = "/index.jsp";
 		}else if(command.equals("/memberView.do")) {
 			String id = request.getParameter("id");
@@ -113,17 +119,14 @@ public class MainController extends HttpServlet {
 			member.setId(id);
 			member.setPasswd(pw);
 			
-			String name = memberDAO.getNameById(id);   //이름 가져오기
-			boolean result = memberDAO.checkLogin(member); //아이디, 비번 체크하기
+			Member m = memberDAO.checkLogin(member); //아이디, 비번 체크하기
+			String name = m.getName();   //이름 가져오기
 			
-			if(result) {
+			if(name != null) {
 				session.setAttribute("sessionId", id);     //세션 아이디 발급
 				session.setAttribute("sessionName", name); //세션 이름 발급
 				nextPage = "/index.jsp";
 			}else {
-				/*String error = "아이디나 비밀번호가 일치하지 않습니다.";
-				request.setAttribute("error", error);
-				response.sendRedirect("/member/loginForm.jsp");*/
 				out.println("<script>");
 				out.println("alert('아이디와 비밀번호를 확인해주세요')");
 				out.println("history.go(-1)"); //이전 페이지로 이동
@@ -219,7 +222,7 @@ public class MainController extends HttpServlet {
 			String id = (String)session.getAttribute("sessionId");*/
 			
 			//일반 name 속성 - request대신 multi로 데이터 받음
-			String realFolder = "D:/kh_web_app/kh-jspworks/members/src/main/webapp/upload";
+			String realFolder = "D:\\yong-jakarta\\members2\\src\\main\\webapp\\upload";
 			MultipartRequest multi = new MultipartRequest(request, realFolder,
 					5*1024*1024, "utf-8", new DefaultFileRenamePolicy());
 					
@@ -228,10 +231,10 @@ public class MainController extends HttpServlet {
 			String id = (String)session.getAttribute("sessionId");
 			
 			//filename 속성 가져오기
-			Enumeration<String> files = multi.getFileNames();
+			Enumeration<?> files = multi.getFileNames();
 			String filename = "";
 			if(files.hasMoreElements()) {
-				String name = files.nextElement();  //속성에서 가져온 파일이름
+				String name = (String)files.nextElement();  //속성에서 가져온 파일이름
 				filename = multi.getFilesystemName(name); //서버에 저장할 파일이름
 			}
 			

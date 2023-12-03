@@ -31,6 +31,14 @@
 						<tr>
 							<td>
 								<c:out value="글쓴이: ${board.id}"/>
+								<%-- <c:if test="${not empty board.modifyDate}">
+									(수정일: <fmt:formatDate value="${board.modifyDate}" 
+	           						  				pattern="yyyy-MM-dd hh:mm:ss"/>)
+								</c:if>
+								<c:if test="${empty board.modifyDate}">
+									(수정일: <fmt:formatDate value="${board.createDate}" 
+	           						  				pattern="yyyy-MM-dd hh:mm:ss"/>)
+								</c:if> --%>
 	           					<c:choose>
 	           						<c:when test="${not empty board.modifyDate}">
 	           						  (수정일: <fmt:formatDate value="${board.modifyDate}" 
@@ -45,6 +53,19 @@
 						</tr>
 						<tr>
 							<td><c:out value="조회수: ${board.hit}" /></td>
+						</tr>
+						<tr>
+							<td>
+							<c:choose>
+								<c:when test="${not empty board.filename }">
+									<c:out value="첨부파일: ${board.filename}" />
+							    	<a href="/filedown.do?filename=${board.filename}"> [다운로드]</a>
+								</c:when>
+								<c:otherwise>
+									<c:out value="첨부파일: " />
+								</c:otherwise>
+							</c:choose>
+							</td>
 						</tr>
 						<tr>
 							<td>
@@ -87,7 +108,7 @@
 				<input type="hidden" name="replyer" value="${sessionId}">
 				<p>${sessionId}</p>
 				<p>
-					<textarea rows="4" cols="50" name="rcontent"
+					<textarea rows="4" cols="70" name="rcontent"
 						placeholder="댓글을 남겨보세요"></textarea>
 				</p>
 				<button type="submit">등록</button>

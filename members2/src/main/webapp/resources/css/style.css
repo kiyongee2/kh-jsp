@@ -2,30 +2,31 @@
 
 /* 공통 스타일 */
 *{margin: 0; padding: 0;}
-#container{width: 90%; margin: 30px auto;}
-a{text-decoration: none;}
+#container{width: 1200px; margin: 30px auto 100px;}
+a{text-decoration: none; color: #333;}
 ul li{list-style: none;}
 
 /* header 스타일 */
 header{height: 100px; background: #0077cc;}
-header #logo{float: left; width: 20%; height: 100px; line-height: 100px; 
-	text-align: left;}
-#logo h1 a{color: greenyellow; padding-left: 24px; font-size: 1.3em; 
+header #logo{float: left; width: 250px; line-height: 100px;}
+#logo h1 a{color: greenyellow; padding-left: 40px; font-size: 1.3em; 
 	font-style: italic;}
 #logo h1 a:hover{color: #eee;}
-header nav{float: right; width: 70%; height: 100px;}
-#topMenu{height: 100px; line-height: 100px;}
+header nav{float: right; width: 1000px; line-height: 100px;}
+nav #topMenu{padding-left: 100px;}
 #topMenu li{float: left; margin: 0 20px;}
 #topMenu li a{display: block; padding: 0 20px; color: #eee;}
 #topMenu li a:hover{ color: #444;}
 
 /* main 스타일 */
-#main{margin: 0 auto; text-align: center;}
-#main .main_img{margin: 20px auto;}
+#main{width: 1000px; margin: 40px auto 100px;}
+#main h1{color: blue; padding: 20px 100px; font-style: italic;}
+#main .main_img{margin: 30px auto 150px; float: left; margin-right: 20px;}
 #main .main_img img{border-radius: 5px;}
+#main .newboard{margin-top: 20px; line-height: 2.5;}
 
 /* footer 스타일 */
-footer{height: 80px; border-top: 2px solid #222;}
+footer{height: 80px; border-top: 2px solid #222; clear: both;}
 #bottomMenu{margin: 10px 10px 10px 20px;}
 #bottomMenu li{display: inline-block; margin: 10px 0; padding: 0 10px;
     border-right: 1px solid #ccc;}
@@ -111,11 +112,11 @@ footer{height: 80px; border-top: 2px solid #222;}
 #board_detail table{width: 550px; margin: 30px auto; border-collapse: collapse;}
 #board_detail table input[type='text']{width: 520px; height: 25px; 
 	padding: 5px;}
-#board_detail table tr:nth-of-type(3) td{text-align: left; padding-left: 10px;}
-#board_detail table tr:nth-of-type(4) td{text-align: left; padding-left: 10px;}
 #board_detail table textarea{width: 520px; height: 350px; resize: none; 
 	padding: 5px; line-height: 1.5; font-family: '맑은고딕'}
-#board_detail table button[type='button']{width: 80px; height: 30px;}
+#board_detail table td{text-align: left; padding-left: 10px;}
+#board_detail table tr:last-child td{text-align: center;}
+#board_detail table button{padding: 5px 10px;}
 #board_detail .reply{border-top: 1px dotted #ccc; font-size: 0.9em; margin: 10px;}
 #board_detail .reply p{margin: 10px 0;}
 #board_detail .reply p:nth-of-type(1){white-space: pre-line; line-height: 1.5em;}

@@ -45,7 +45,7 @@
 						</tr>
 						<tr>
 							<td>
-								<a href="/down.do?filename=${board.filename}">파일다운</a>
+								${board.filename} <a href="/down.do?filename=${board.filename}">파일다운</a>
 							</td>
 						</tr>
 						<tr>

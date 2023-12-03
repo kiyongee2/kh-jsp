@@ -4,7 +4,7 @@
 <script src="https://kit.fontawesome.com/187dabceeb.js" crossorigin="anonymous"></script>
 <header>
   <div id="logo">
-	<h1><a href="/">KH</a></h1>
+	<h1><a href="/">khit</a></h1>
   </div>
 
   <nav>

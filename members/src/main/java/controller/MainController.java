@@ -161,7 +161,7 @@ public class MainController extends HttpServlet {
 			String id = (String)session.getAttribute("sessionId");*/
 			
 			//일반 name 속성 - request대신 multi로 데이터 받음
-			String realFolder = "D:/kh_web_app/kh-jspworks/members/src/main/webapp/upload";
+			String realFolder = "D:\\yong-jakarta\\members\\src\\main\\webapp\\upload";
 			MultipartRequest multi = new MultipartRequest(request, realFolder,
 					5*1024*1024, "utf-8", new DefaultFileRenamePolicy());
 					
