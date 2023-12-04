@@ -12,18 +12,18 @@
 		$.ajax({
 			type: "get",
 			dataType: "text",
-			url: "http://localhost:8080/test/checkid",
+			url: "/test/checkid", //http://localhost:8080/test/checkid과 동일
 			data: {id: t_id},
 			success: function(data){
 				if(data == 'usable'){
 					$('#message').text('사용할 수 있는 ID입니다');
-				}else{
+				}else{ //data == 'not_usable'
 					$('#message').text('사용할 수 없는 ID입니다');
 				}
 			},
 			error: function(data){
 				alert("에러 발생!!");
-			},
+			}
 		});
 	}
 </script>

@@ -20,7 +20,8 @@ nav #topMenu{padding-left: 100px;}
 
 /* main 스타일 */
 #main{width: 1000px; margin: 40px auto 100px;}
-#main h1{color: blue; padding: 20px 100px; font-style: italic;}
+#main h1{color: blue; padding: 20px 100px; font-style: italic;
+	border-bottom: 1px solid #ccc;}
 #main .main_img{margin: 30px auto 150px; float: left; margin-right: 20px;}
 #main .main_img img{border-radius: 5px;}
 #main .newboard{margin-top: 20px; line-height: 2.5;}
@@ -97,6 +98,7 @@ footer{height: 80px; border-top: 2px solid #222; clear: both;}
 #boardlist .pagination a .page{font-weight: bold; color: #f00;}
 #boardlist .search_form{text-align: right; margin-top: 20px;}
 #boardlist .sel_field, .in_kw{padding: 8px;}
+#boardlist .replycnt{color: #b00;}
 
 /* board_reg 스타일 */
 #board_reg{width: 550px; margin: 40px auto 100px;}

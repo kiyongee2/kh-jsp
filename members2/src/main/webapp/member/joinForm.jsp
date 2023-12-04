@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>회원 가입 폼</title>
 <link rel="stylesheet" href="../resources/css/style.css">
+<script src="../resources/js/jquery-3.7.1.js"></script>
 <script src="../resources/js/validation.js"></script>
 </head>
 <body>
@@ -21,7 +22,7 @@
 						<input type="text" id="id" name="id"
 							   placeholder="아이디는 4~15자까지 입력 가능합니다.">
 						<button type="button" id="btnChk" value="N" 
-								class="btn_check" onclick="checkID()" >ID 중복</button>
+								class="btn_check" onclick="checkId()">ID 중복</button>
 						<p id="check"></p>
 					</li>
 					<li>

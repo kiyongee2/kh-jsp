@@ -44,7 +44,7 @@
 							<c:out value="${board.title}" />
 						</a>
 						<c:if test="${board.replycnt ne 0 }">
-						[${board.replycnt}]
+							<span class="replycnt">[${board.replycnt}]</span>
 						</c:if>
 					</td>
 					<%-- <td><fmt:formatDate value="${board.createDate}"

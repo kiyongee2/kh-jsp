@@ -1,4 +1,4 @@
-package test;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,16 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.MemberDAO;
 
-@WebServlet("/test/checkid")
-public class CheckId extends HttpServlet {
+@WebServlet("/duplicatedid")
+public class DuplicatedID extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public CheckId() {
+
+    public DuplicatedID() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+		
 		response.setContentType("text/html; charset=utf-8");
+		
 		PrintWriter out = response.getWriter();
 		
 		String id = request.getParameter("id");
@@ -34,4 +39,5 @@ public class CheckId extends HttpServlet {
 			out.print("usable");
 		}
 	}
+
 }
