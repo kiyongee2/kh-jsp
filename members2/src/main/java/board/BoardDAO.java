@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.JDBCUtil;
+import reply.Reply;
 
 public class BoardDAO {
 	//필드
@@ -131,6 +132,7 @@ public class BoardDAO {
 				board.setModifyDate(rs.getTimestamp("modifydate"));
 				board.setHit(rs.getInt("hit"));
 				board.setId(rs.getString("id"));
+				board.setReplycnt(rs.getInt("replycnt"));
 				
 				boardList.add(board);  //개별 board 객체를 추가 저장
 			}
@@ -250,4 +252,30 @@ public class BoardDAO {
 			JDBCUtil.close(conn, pstmt);
 		}
 	}
+	
+	//댓글 수 조회
+	public void updateReplycnt(int bno) {
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "UPDATE board "
+					+ "SET replycnt = ( "
+					+ "            SELECT count(rno) "
+					+ "            FROM reply "
+					+ "            WHERE bno = ?) "
+					+ "WHERE bno = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			pstmt.setInt(2, bno);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
 }
+
+
+
+
+

@@ -3,6 +3,7 @@ package reply;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -116,5 +117,24 @@ public class ReplyDAO {
 		} finally {
 			JDBCUtil.close(conn, pstmt);
 		}
+	}
+	
+	//댓글 수 조회
+	public int getReplycnt(Reply reply) {
+		int replycnt = 0;
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT COUNT(*) AS replycnt FROM reply WHERE bno = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reply.getBno());
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				replycnt = rs.getInt("replycnt");  //db에서 총개수 반환
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return replycnt;
 	}
 }

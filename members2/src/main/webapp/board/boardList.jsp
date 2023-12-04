@@ -43,6 +43,9 @@
 						<a href="/boardView.do?bno=${board.bno}">
 							<c:out value="${board.title}" />
 						</a>
+						<c:if test="${board.replycnt ne 0 }">
+						[${board.replycnt}]
+						</c:if>
 					</td>
 					<%-- <td><fmt:formatDate value="${board.createDate}"
 							pattern="yyyy-MM-dd HH:mm:ss" /> 

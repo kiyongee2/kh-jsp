@@ -69,18 +69,18 @@ public class MainController extends HttpServlet {
 		if(command.equals("/main.do")) {
 			//게시글 가져오기
 			List<Board> boardList = boardDAO.getBoardList();
-			//int size = boardList.size(); //게시글의 총수
-			//System.out.println("총게시글: " + size);
-		
+			//System.out.println("총게시글: " + boardList.size());
+			request.setAttribute("boardList", boardList);
+			
 			//최신글 3개를 담은 배열 생성
-			if(boardList.size() > 3) {
-				Board[] newBoards = {boardList.get(0), boardList.get(1), boardList.get(2)};
+			if(boardList.size() >= 3) {
+				Board[] newBoards = {boardList.get(0), boardList.get(1), 
+						boardList.get(2)};
 								
 				//모델 생성
 				request.setAttribute("boardList", newBoards);
 			}
 			nextPage = "/main.jsp";
-			
 		}else if(command.equals("/memberList.do")) {
 			List<Member> memberList = memberDAO.getMemberList();
 			request.setAttribute("memberList", memberList);
@@ -205,6 +205,8 @@ public class MainController extends HttpServlet {
 			//게시글 목록(검색, 페이지처리)
 			List<Board> boardList = boardDAO.getBoardList(field, kw, currentPage);
 			
+			//댓글 수 조회
+
 			//모델 생성
 			request.setAttribute("boardList", boardList);
 			request.setAttribute("currentPage", currentPage);
@@ -250,6 +252,8 @@ public class MainController extends HttpServlet {
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			//게시글 1개 보기
 			Board board = boardDAO.getBoard(bno);
+			//게시글에서 댓글 작성후 댓글 수 업데이트
+			boardDAO.updateReplycnt(bno);
 			//댓글 목록 보기
 			List<Reply> replyList = replyDAO.getReplyList(bno);
 			

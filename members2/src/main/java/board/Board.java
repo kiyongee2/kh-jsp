@@ -16,6 +16,7 @@ public class Board implements Serializable{
 	private int hit;
 	private String filename;
 	private String id;
+	private int replycnt;
 	
 	public int getBno() {
 		return bno;
@@ -64,5 +65,11 @@ public class Board implements Serializable{
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public int getReplycnt() {
+		return replycnt;
+	}
+	public void setReplycnt(int replycnt) {
+		this.replycnt = replycnt;
 	}
 }
