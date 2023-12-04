@@ -16,7 +16,7 @@
 		$.ajax({
 			type: "get",
 			dataType: "text",
-			url: "http://localhost:8080/jwbook3/ajaxtest/ajax1",
+			url: "/jwbook3/ajaxtest/ajax1",
 			data: {message: "Hello~ Ajax!"},
 			success: function(data){
 				$('#message').append(data)
@@ -30,7 +30,7 @@
 </script>
 </head>
 <body>
-    <h3>ajax 테스트</h3>
+    <h3>ajax(에이잭스) 테스트</h3>
 	<button type="button" onclick="fnProcess()">전송</button>
 	<div id="message"></div>
 </body>

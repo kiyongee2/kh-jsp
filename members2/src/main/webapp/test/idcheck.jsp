@@ -29,6 +29,7 @@
 </script>
 </head>
 <body>
+	<h3>ID 중복 확인 체크</h3>
     <p><input type="text" id="t_id">
     <p><input type="button" value="ID 중복" onclick="checkId()">
     <div id="message"></div>

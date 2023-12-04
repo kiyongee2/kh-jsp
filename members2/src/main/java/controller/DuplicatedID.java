@@ -15,11 +15,6 @@ import member.MemberDAO;
 public class DuplicatedID extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public DuplicatedID() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");

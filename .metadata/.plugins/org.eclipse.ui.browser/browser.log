@@ -21,3 +21,6 @@
 
 11월 28, 2023 07:58:20.97 NEW SESSION
 11월 28, 2023 07:58:20.98 [10484:8328:1128/075820.970:ERROR:persistent_memory_allocator.cc(890)] Corruption detected in shared-memory segment.
+
+12월 05, 2023 08:06:14.69 NEW SESSION
+12월 05, 2023 08:06:14.71 [7420:8708:1205/080614.690:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2

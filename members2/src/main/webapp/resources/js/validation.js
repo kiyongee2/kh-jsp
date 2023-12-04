@@ -7,6 +7,7 @@ function checkMember(){
 	let pw1 = form.passwd.value;
 	let pw2 = form.passwd2.value;
 	let name = form.name.value; 
+	let btnChk = form.btnChk.value;
 	
 	//정규 표현식
 	let regexPw1 = /[0-9]+/;      //숫자만
@@ -32,6 +33,9 @@ function checkMember(){
 		alert("이름은 한글로 입력해주세요");
 		form.name.focus();
 		return false;
+	}else if(btnChk == 'N'){
+		alert("ID 중복을 체크해주세요");
+		return false;
 	}else{
 	    form.submit();
 	}
@@ -49,7 +53,7 @@ function checkId(){
 	$.ajax({
 		type: "post",
 		dataType: "text",
-		url: "duplicatedid", //http://localhost:8080/idcheck과 동일
+		url: "/duplicatedid", //http://localhost:8080/duplicatedid과 동일
 		data: {id: mid},
 		success: function(data){
 			if(data == 'usable'){
