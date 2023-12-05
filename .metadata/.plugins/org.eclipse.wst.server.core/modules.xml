@@ -6,5 +6,6 @@
   <module moduleId="org.eclipse.jst.jee.server:jwbook2" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:AddressBook" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:jwbook3" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:khshop" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:members" serverId="Tomcat v9.0 Server at localhost"/>
 </modules>
