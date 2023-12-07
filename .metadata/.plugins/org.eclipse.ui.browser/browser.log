@@ -24,3 +24,12 @@
 
 12월 05, 2023 08:06:14.69 NEW SESSION
 12월 05, 2023 08:06:14.71 [7420:8708:1205/080614.690:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+12월 06, 2023 11:57:56.71 NEW SESSION
+12월 06, 2023 11:57:56.72 [2956:1208:1206/115756.708:ERROR:persistent_memory_allocator.cc(890)] Corruption detected in shared-memory segment.
+
+12월 06, 2023 16:48:19.49 NEW SESSION
+12월 06, 2023 16:48:19.50 [13844:9364:1206/164819.487:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+12월 06, 2023 17:27:00.32 [13844:9364:1206/172700.327:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+12월 06, 2023 17:39:34.42 [13844:9364:1206/173934.420:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+12월 06, 2023 17:41:48.98 [13844:9364:1206/174148.985:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2

@@ -62,16 +62,19 @@ public class MainController extends HttpServlet {
 		//출력 스트림 객체 생성
 		PrintWriter out = response.getWriter();
 		
-		if(command.equals("/index.do")) {
+		if(command.equals("/main.do")) {
 			//게시글 가져오기
 			List<Board> boardList = boardDAO.getBoardList();
-			int size = boardList.size(); //게시글의 총수
-			//최신글 3개를 담은 배열 생성
-			Board[] boardArray = {boardList.get(size-1), boardList.get(size-2), 
-					boardList.get(size-3)};
+			request.setAttribute("boardList", boardList);
+			System.out.println(boardList.size());
 			
-			//모델 생성
-			request.setAttribute("boardList", boardArray);
+			if(boardList.size() >= 3) {
+				//최신글 3개를 담은 배열 생성
+				Board[] boardArray = {boardList.get(0), boardList.get(1), 
+						boardList.get(2)};
+				//모델 생성
+				request.setAttribute("boardList", boardArray);
+			}
 			nextPage = "/main.jsp";
 		}else if(command.equals("/memberList.do")) {
 			List<Member> memberList = memberDAO.getMemberList();
@@ -150,8 +153,61 @@ public class MainController extends HttpServlet {
 		
 		//게시판
 		if(command.equals("/boardList.do")) {
-			List<Board> boardList = boardDAO.getBoardList();
+			//페이지 처리
+			String pageNum = request.getParameter("pageNum");
+			if(pageNum == null) {
+				pageNum = "1";
+			}
+			
+			int currentPage = Integer.parseInt(pageNum);
+			int pageSize = 10;  //페이지당 게시글 수
+			//각 페이지의 첫 행
+			int startRow = (currentPage-1) * pageSize + 1;
+			System.out.println("시작 행: " + startRow);
+			
+			//시작 페이지 - int형이므로 소수이하 손실됨
+			int startPage = startRow / pageSize + 1;
+			System.out.println("시작페이지 " + startPage);
+			
+			//종료 페이지 - 총 게시글수 / 페이지당 게시글 수
+			int totalRow = boardDAO.getBoardCount();
+			System.out.println("총 게시글 수 " + totalRow);
+			
+			int endPage = totalRow / pageSize;
+			endPage = (totalRow % pageSize == 0) ? endPage : endPage + 1;
+			System.out.println("종료페이지 " + endPage);
+			
+			//게시글 목록 검색
+			String _field = request.getParameter("field");
+			String _kw = request.getParameter("kw");
+			
+			String field = "", kw = "";  //필드와 검색값 할당
+			if(_field != null) {  //쿼리값이 있는 경우
+				field = _field;
+			}else {  //쿼리값이 없으면 title 저장
+				field = "title";
+			}
+			
+			if(_kw != null) {
+				kw = _kw;
+			}else {
+				kw = "";
+			}
+			
+			//페이지 처리 메서드 호출
+			//List<Board> boardList = boardDAO.getBoardList(currentPage);
+			//검색 처리 메서드 호출
+			//List<Board> boardList = boardDAO.getBoardList(field, kw);
+			//검색 처리 메서드 호출
+			List<Board> boardList = boardDAO.getBoardList(currentPage, field, kw);
+			
 			request.setAttribute("boardList", boardList);
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("field", field);
+			request.setAttribute("kw", kw);
+			
 			nextPage = "/board/boardList.jsp";
 		}else if(command.equals("/writeForm.do")) {
 			nextPage = "/board/writeForm.jsp";

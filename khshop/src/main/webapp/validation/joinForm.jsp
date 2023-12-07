@@ -5,13 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입 페이지</title>
-<style>
-    form{width: 500px;}
-    input{width: 250px; height: 25px;}
-	ul li{list-style: none; margin: 16px;}
-	label{width: 120px; float: left;}
-	button{padding: 5px 8px;}
-</style>
+<link rel="stylesheet" href="css/style.css">
 <script src="js/validation.js"></script>
 </head>
 <body>
@@ -21,12 +15,12 @@
 			<ul>
 				<li>
 					<label for="uid">아이디</label>
-					<input type="text" id="uid" name="uid" autofocus
+					<input type="text" id="uid" name="uid" autofocus required
 						   placeholder="아이디는 5 ~ 12자까지 입력해주세요">
 				</li>
 				<li>
 					<label for="passwd">비밀번호</label>
-					<input type="password" id="passwd" name="passwd"
+					<input type="password" id="passwd" name="passwd" required
 					       placeholder="영문자, 숫자, 특수문자 포함 7자 이상 입력">
 				</li>
 				<li>

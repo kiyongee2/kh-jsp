@@ -94,8 +94,8 @@ footer{height: 80px; border-top: 2px solid #222;}
 #boardlist .pagination{text-align: center;}
 #boardlist .pagination a{margin: 5px;}
 #boardlist .pagination a .page{font-weight: bold; color: #f00;}
-#boardlist .search_form{text-align: right; margin-top: 20px;}
-#boardlist .sel_field, .in_kw{padding: 8px;}
+#boardlist .searchform{text-align: right; margin-top: 20px;}
+#boardlist .field, .kw{padding: 8px;}
 
 /* board_reg 스타일 */
 #board_reg{width: 550px; margin: 40px auto 100px;}

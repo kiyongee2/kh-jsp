@@ -1,6 +1,4 @@
-/**
- * 회원 가입 유효성 검사
- */
+
 function checkForm(){
 	//name 속성 변수
 	let form = document.member;
@@ -13,7 +11,7 @@ function checkForm(){
 	let regexPw1 = /[0-9]+/;         
 	let regexPw2 = /[a-zA-Z]+/;      
 	let regexPw3 = /[~!@#$%^&*()_=]+/; 
-	let regexName = /^[a-zA-Z가-힣]/      
+	let regexName = /^[가-힣]/      
 	
 	if(id.length < 5 || id.length > 12){
 		alert("아이디는 5 ~ 12자까지 입력해주세요");

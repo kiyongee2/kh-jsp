@@ -162,6 +162,25 @@ public class MainController extends HttpServlet {
 		
 		//게시판
 		if(command.equals("/boardList.do")) {
+			//페이지 처리
+			String pageNum = request.getParameter("pageNum");
+			if(pageNum == null) { //pageNum이 없으면 기본 1페이지
+				pageNum = "1";
+			}
+			//각 페이지의 첫행 : 1page->01번, 2page->11, 3->21
+			int currentPage = Integer.parseInt(pageNum);
+			int pageSize = 10;
+			int startRow = (currentPage - 1) * pageSize + 1;
+			
+			//시작 페이지 : 13번->2, 23->3
+			int startPage = startRow / pageSize + 1;
+			
+			//종료(끝) 페이지
+			int totalRow = boardDAO.getBoardCount(); //총행수가 나누어 떨어지면 않으면 페이지수에 1을 더함
+			//int endPage = toatal / pageSize -> 3page
+			int endPage = totalRow / pageSize;  //총행수 / 페이지당 행의 수
+			endPage = (totalRow % pageSize == 0) ? endPage : endPage + 1;
+			
 			//검색 처리
 			//_field, _kw - 임시변수 선언
 			String _field = request.getParameter("field");
@@ -181,25 +200,6 @@ public class MainController extends HttpServlet {
 			}else {
 				kw = "";  //쿼리값이 없는 경우(기본)
 			}
-			
-			//페이지 처리
-			String pageNum = request.getParameter("pageNum");
-			if(pageNum == null) { //pageNum이 없으면 기본 1페이지
-				pageNum = "1";
-			}
-			//각 페이지의 첫행 : 1page->01번, 2page->11, 3->21
-			int currentPage = Integer.parseInt(pageNum);
-			int pageSize = 10;
-			int startRaw = (currentPage-1)*pageSize + 1;
-			
-			//시작 페이지 : 13번->2, 23->3
-			int startPage = startRaw / pageSize + 1;
-			
-			//종료(끝) 페이지
-			int total = boardDAO.getBoardCount(); //총행수가 나누어 떨어지면 않으면 페이지수에 1을 더함
-			//int endPage = toatal / pageSize -> 3page
-			int endPage = total / pageSize;  //총행수 / 페이지당 행의 수
-			endPage = (total % 10 == 0) ? endPage : endPage + 1;
 			
 			//게시글 목록(페이지처리)
 			//List<Board> boardList = boardDAO.getBoardList(currentPage);

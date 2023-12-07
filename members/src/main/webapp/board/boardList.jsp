@@ -14,7 +14,15 @@
 	  <div id="container">
 	   <section id="boardlist">
 		<h2>게시판 목록</h2>
-		
+		<!-- 검색 폼 -->
+		<form action="" method="get" class="searchform">
+			<select name="field" class="field">
+				<option value="title" ${(field eq "title") ? "selected" : ""}>제목</option>
+			    <option value="id" ${(field eq "id") ? "selected" : ""}>작성자</option>
+			</select>
+			<input type="text" name="kw" value="${kw}" class="kw">
+			<button type="submit">검색</button>
+		</form>
 		<!-- 목록 -->
 		<table id="tbl_list">
 			<thead>
@@ -56,7 +64,39 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	
+		<!-- 페이지 처리 영역 -->
+		<div class="pagination">
+			<!-- 이전 페이지 -->
+			<c:choose>
+				<c:when test="${startPage > 1}">
+					<a href="/boardList.do?pageNum=${startPage-1}">&laquo;</a>
+				</c:when>
+				<c:otherwise>
+					<a href="">&laquo;</a>
+				</c:otherwise>
+			</c:choose>
+			<!-- 페이지 리스트 -->
+			<c:forEach var="i" begin="1" end="${endPage}">
+				<%-- <a href="#">${i}</a>  --%>
+				<c:choose>
+					<c:when test="${currentPage == i}">
+						<a href="/boardList.do?pageNum=${i}"><b>${i}</b></a> 
+					</c:when>
+					<c:otherwise>
+						<a href="/boardList.do?pageNum=${i}">${i}</a> 
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<!-- 다음 페이지 -->
+			<c:choose>
+				<c:when test="${endPage > startPage}">
+					<a href="/boardList.do?pageNum=${startPage+1}">&raquo;</a>
+				</c:when>
+				<c:otherwise>
+					<a href="">&raquo;</a>
+				</c:otherwise>
+			</c:choose>
+		</div>
 		<!-- 글쓰기 버튼 -->
 		<div class="btnWrite">
 			<a href="/writeForm.do">
@@ -64,7 +104,6 @@
 			</a>
 		</div>
 		</section>
-		
 	 </div>
  	<jsp:include page="../footer.jsp" />
 </body>

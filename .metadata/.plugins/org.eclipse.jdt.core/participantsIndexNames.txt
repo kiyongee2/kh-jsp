@@ -79,6 +79,8 @@ D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3163868405
 \jwbook2\src\main\java
 D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\403478192.index
 \AddressBook2\src\main\java
+D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1540385458.index
+\khshop\src\main\java
 D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\887483883.index
 \jwbook\src\main\java
 D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2982156171.index

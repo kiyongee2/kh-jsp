@@ -42,7 +42,6 @@ INDEX VERSION 1.134+D:\yong-jakarta\.metadata\.plugins\org.eclipse.jdt.core
 2772488060.index
 3408369145.index
 1439171071.index
-655516556.index
 1112173726.index
 3302087058.index
 167862844.index

@@ -20,7 +20,7 @@ public class BoardDAO {
 		List<Board> boardList = new ArrayList<>();
 		try {
 			conn = JDBCUtil.getConnection();
-			String sql = "SELECT * FROM board ORDER BY createdate DESC";
+			String sql = "SELECT * FROM board ORDER BY bno DESC";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -42,6 +42,125 @@ public class BoardDAO {
 			JDBCUtil.close(conn, pstmt, rs);
 		}
 		return boardList;
+	}
+	
+	//페이지 처리
+	public List<Board> getBoardList(int page){
+		List<Board> boardList = new ArrayList<>();
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT * "
+					+ "FROM (SELECT ROWNUM RN, bo.* "
+					+ "      FROM (SELECT * FROM board ORDER BY bno DESC) bo) "
+					+ "WHERE RN >= ? AND RN <= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (page-1)*10 + 1);
+			pstmt.setInt(2, page*10);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Board board = new Board();
+				board.setBno(rs.getInt("bno"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setCreateDate(rs.getTimestamp("createdate"));
+				board.setModifyDate(rs.getTimestamp("modifydate"));
+				board.setHit(rs.getInt("hit"));
+				board.setFilename(rs.getString("filename"));
+				board.setId(rs.getString("id"));
+				
+				boardList.add(board);  //개별 board 객체를 추가 저장
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return boardList;
+	}
+	
+	//게시글 검색
+	public List<Board> getBoardList(String field, String kw){
+		List<Board> boardList = new ArrayList<>();
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT * FROM board "
+					+ "WHERE " + field + " LIKE ? ORDER BY bno DESC";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + kw + "%");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Board board = new Board();
+				board.setBno(rs.getInt("bno"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setCreateDate(rs.getTimestamp("createdate"));
+				board.setModifyDate(rs.getTimestamp("modifydate"));
+				board.setHit(rs.getInt("hit"));
+				board.setFilename(rs.getString("filename"));
+				board.setId(rs.getString("id"));
+				
+				boardList.add(board);  //개별 board 객체를 추가 저장
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return boardList;
+	}
+	
+	//페이지 처리와 검색
+	public List<Board> getBoardList(int page, String field, String kw){
+		List<Board> boardList = new ArrayList<>();
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT * "
+					+ "FROM (SELECT ROWNUM RN, bo.* "
+					+ "      FROM (SELECT * FROM board WHERE " + field + " LIKE ? "
+					+ "            ORDER BY bno DESC) bo) "
+					+ "WHERE RN >= ? AND RN <= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + kw + "%");
+			pstmt.setInt(2, (page-1)*10 + 1);
+			pstmt.setInt(3, page*10);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Board board = new Board();
+				board.setBno(rs.getInt("bno"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setCreateDate(rs.getTimestamp("createdate"));
+				board.setModifyDate(rs.getTimestamp("modifydate"));
+				board.setHit(rs.getInt("hit"));
+				board.setFilename(rs.getString("filename"));
+				board.setId(rs.getString("id"));
+				
+				boardList.add(board);  //개별 board 객체를 추가 저장
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return boardList;
+	}
+
+	//총 게시글 수
+	public int getBoardCount() {
+		int total = 0;
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT COUNT(*) AS total FROM board";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			total = rs.getInt("total");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return total;
 	}
 	
 	//게시글 쓰기

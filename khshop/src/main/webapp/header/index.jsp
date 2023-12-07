@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 커뮤니티...</title>
+<title>상단 메뉴</title>
 </head>
 <body>
-	<script>
-		location.href = "/main.do";
-	</script>
+	<nav class="navbar">
+		<div class="navbar_logo">
+			<a href="">khit</a>
+		</div>
+	</nav>
 </body>
 </html>
