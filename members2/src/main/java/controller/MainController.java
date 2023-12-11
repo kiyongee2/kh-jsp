@@ -112,7 +112,6 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("/loginForm.do")) {
 			nextPage = "/member/loginForm.jsp";
 		}else if(command.equals("/login.do")) {
-			
 			Member member = new Member();
 			String id = request.getParameter("id");
 			String pw = request.getParameter("passwd"); 

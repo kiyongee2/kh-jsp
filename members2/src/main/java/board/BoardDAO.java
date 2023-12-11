@@ -115,7 +115,8 @@ public class BoardDAO {
 			conn = JDBCUtil.getConnection();
 			String sql = "SELECT * "
 					+ "FROM (SELECT ROWNUM rn, bo.* "
-					+ "      FROM(SELECT * FROM board WHERE "+ field + " LIKE ? ORDER BY bno DESC) bo) "
+					+ "      FROM(SELECT * FROM board WHERE "
+					+ 			field + " LIKE ? ORDER BY bno DESC) bo) "
 					+ "WHERE rn BETWEEN ? AND ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+kw+"%");

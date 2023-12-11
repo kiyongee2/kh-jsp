@@ -8,10 +8,10 @@ public class JdbcTest {
 
 	public static void main(String[] args) {
 		//필드
-		String driverClass = "oracle.jdbc.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521/xe";
-		String user = "jwbook";
-		String password = "pwjwbook";
+		String driverClass = "com.mysql.cj.jdbc.Driver";
+		String url = "jdbc:mysql://127.0.0.1:3306/jwebdb?serverTime=Asia/Seoul";
+		String user = "javauser";
+		String password = "pwjavauser";
 		Connection conn = null;
 		
 		try {

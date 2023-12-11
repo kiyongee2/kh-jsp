@@ -26,13 +26,13 @@
 					<tbody>
 						<tr>
 							<td>
-								<input type="text" name="title"
+								<input type="text" name="title" id="title"
 									placeholder="글제목" required>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<textarea rows="8" cols="100"
+								<textarea rows="8" cols="100" 
 									name="content" placeholder="글내용"></textarea> 
 							</td>
 						</tr>
@@ -50,6 +50,7 @@
 			</form>
 		</section>
 	</div>
+
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>

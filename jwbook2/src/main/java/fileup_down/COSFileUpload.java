@@ -28,8 +28,9 @@ public class COSFileUpload extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		//파일이 저장되는 위치
-		ServletContext context = getServletContext();
-		String realFolder = context.getRealPath("uploaded_files");
+		//ServletContext context = getServletContext();
+		//String realFolder = context.getRealPath("uploaded_files");
+		String realFolder = "D:\\yong-jakarta\\jwbook2\\src\\main\\webapp\\uploaded_files";
 		
 		//MultipartRequest의 인자
 		int maxSize = 10*1024*1024;
@@ -41,13 +42,16 @@ public class COSFileUpload extends HttpServlet {
 				= new MultipartRequest(request, realFolder, maxSize, encType, policy);
 			
 			//일반 텍스트 파라미터 추출
-			Enumeration<?> params = multi.getParameterNames();
+			/*Enumeration<?> params = multi.getParameterNames();
 			
 			while(params.hasMoreElements()) {
 				String paramName = (String)params.nextElement();
 				String paramValue = multi.getParameter(paramName);
 				out.println(paramName + " : " + paramValue + "<br>");
-			}
+			}*/
+			
+			String comment = multi.getParameter("comment");
+			System.out.println("설명: " + comment);
 			
 			//file 파라미터 추출
 			Enumeration<?> files = multi.getFileNames();
@@ -68,7 +72,7 @@ public class COSFileUpload extends HttpServlet {
 					String fileSystemname = multi.getFilesystemName(userFilename);
 			
 					out.println("fileSystemname : " + fileSystemname + "<br>");
-					out.println("<a href=down.do?filename=" + fileSystemname + ">파일다운</a><br><br>");
+					out.println("<a href=cosdown.do?filename=" + fileSystemname + ">파일다운</a><br><br>");
 					
 					//업로드된 파일의 File 객체 생성
 					File userFile = multi.getFile(userFilename);

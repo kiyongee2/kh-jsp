@@ -2,12 +2,16 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="Market"/>
+			<item value="khshop"/>
 			<item value="members"/>
 			<item value="jwbook"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Market"/>
+			<item value="khshop"/>
 			<item value="members"/>
 			<item value="jwbook"/>
 		</list>
