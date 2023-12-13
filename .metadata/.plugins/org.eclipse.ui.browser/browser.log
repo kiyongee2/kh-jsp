@@ -33,3 +33,18 @@
 12월 06, 2023 17:27:00.32 [13844:9364:1206/172700.327:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
 12월 06, 2023 17:39:34.42 [13844:9364:1206/173934.420:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
 12월 06, 2023 17:41:48.98 [13844:9364:1206/174148.985:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+12월 11, 2023 12:30:24.86 NEW SESSION
+12월 11, 2023 12:30:24.87 [13872:15660:1211/123024.858:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+12월 12, 2023 05:43:54.41 NEW SESSION
+12월 12, 2023 05:43:54.43 [2364:6020:1212/054354.411:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+12월 12, 2023 06:26:17.22 [10232:2468:1212/062617.221:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+12월 12, 2023 06:27:55.66 [10232:2468:1212/062755.668:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+12월 12, 2023 06:28:50.98 [10232:2468:1212/062850.980:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+12월 12, 2023 06:28:52.77 [10232:2468:1212/062852.776:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+12월 12, 2023 06:28:54.96 [10232:2468:1212/062854.965:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+12월 12, 2023 06:31:47.56 [10232:2468:1212/063147.564:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+12월 12, 2023 06:32:34.90 [10232:2468:1212/063234.909:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+12월 12, 2023 06:35:58.62 [10232:2468:1212/063558.625:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+12월 12, 2023 06:36:21.75 [10232:2468:1212/063621.752:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost

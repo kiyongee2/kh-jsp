@@ -13,7 +13,7 @@
   <jsp:include page="header.jsp" />
   <div id="container">
    <section id="main">
-	   <h2>안녕하세요~ KH-IT 커뮤니티입니다.</h2>
+	   <h1>안녕하세요~ KH-IT 커뮤니티입니다.</h1>
 	   <div class="main_img">
 	   	  <img src="resources/images/bird.jpg" alt="배경 사진">
 	   </div>

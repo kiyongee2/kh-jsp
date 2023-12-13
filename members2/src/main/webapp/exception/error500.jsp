@@ -6,14 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 정보</title>
+<title>회원 커뮤니티...</title>
+<link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
-	<jsp:include page="../header.jsp" />
-	<div class="container my-3">
-	   <h2 class="text-center">상품 정보</h2>
-		 
-	 </div>
-	 <jsp:include page="../footer.jsp" />
+  <jsp:include page="../header.jsp" />
+  <div id="container">
+   	<h2>페이지 오류가 발생했습니다. 빠른 시일에 조치하겠습니다.</h2>
+ </div>
+ <jsp:include page="../footer.jsp" />
 </body>
 </html>

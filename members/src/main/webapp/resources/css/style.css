@@ -20,12 +20,16 @@ header nav{float: right; width: 70%; height: 100px;}
 #topMenu li a:hover{ color: #444;}
 
 /* main 스타일 */
-#main{margin: 0 auto; text-align: center;}
-#main .main_img{margin: 20px auto;}
+#main{margin: 0 auto;}
+#main h1{color: blue; font-style: italic; padding: 20px 60px;}
+#main .main_img{margin: 16px 30px; float: left;}
 #main .main_img img{border-radius: 5px;}
+.newboard{text-align: left;}
+.newboard h3{margin: 30px;}
+.newboard p{line-height: 2.5;}
 
 /* footer 스타일 */
-footer{height: 80px; border-top: 2px solid #222;}
+footer{height: 80px; border-top: 2px solid #222; clear:both}
 #bottomMenu{margin: 10px 10px 10px 20px;}
 #bottomMenu li{display: inline-block; margin: 10px 0; padding: 0 10px;
     border-right: 1px solid #ccc;}

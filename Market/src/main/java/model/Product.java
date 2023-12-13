@@ -19,8 +19,9 @@ public class Product implements Serializable{
 	private String description;
 	private String category;
 	private long pstock;
-	private String condition;
+	private String condition;  //신상 or 중고
 	private String pimage;
 	private Timestamp regDate;
 	private Timestamp updateDate;
+	private int quantity;   //장바구니에 담은 개수
 }

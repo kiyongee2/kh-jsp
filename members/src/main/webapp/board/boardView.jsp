@@ -24,8 +24,9 @@
 						</tr>
 						<tr>
 							<td>
-								<textarea rows="8" cols="100" name="content"
-									readonly="readonly">${board.content}</textarea> 
+								<%-- <textarea rows="8" cols="100" name="content"
+									readonly="readonly">${board.content}</textarea>  --%>
+								<img src="../upload/${product.filename}">
 							</td>
 						</tr>
 						<tr>

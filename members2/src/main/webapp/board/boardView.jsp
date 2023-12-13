@@ -24,21 +24,17 @@
 						</tr>
 						<tr>
 							<td>
-								<textarea rows="8" cols="100" name="content"
-									readonly="readonly">${board.content}</textarea> 
+							    <div>
+								<c:if test="${not empty board.filename}">
+									<img src="../upload/${board.filename}" width="60%" height="40%">
+								</c:if>
+								</div>
+								${board.content}
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<c:out value="글쓴이: ${board.id}"/>
-								<%-- <c:if test="${not empty board.modifyDate}">
-									(수정일: <fmt:formatDate value="${board.modifyDate}" 
-	           						  				pattern="yyyy-MM-dd hh:mm:ss"/>)
-								</c:if>
-								<c:if test="${empty board.modifyDate}">
-									(수정일: <fmt:formatDate value="${board.createDate}" 
-	           						  				pattern="yyyy-MM-dd hh:mm:ss"/>)
-								</c:if> --%>
 	           					<c:choose>
 	           						<c:when test="${not empty board.modifyDate}">
 	           						  (수정일: <fmt:formatDate value="${board.modifyDate}" 

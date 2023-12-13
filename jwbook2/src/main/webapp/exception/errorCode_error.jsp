@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>에러 코드 500 오류가 발생했습니다.
+	<h2></h2>
 </body>
 </html>

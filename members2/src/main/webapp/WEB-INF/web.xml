@@ -24,4 +24,14 @@
   		<form-error-page>/member/failLogin.jsp</form-error-page>
   	</form-login-config>
   </login-config>
+  
+  <!-- 예외 처리 -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/exception/error404.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/exception/error500.jsp</location>
+  </error-page>
 </web-app>

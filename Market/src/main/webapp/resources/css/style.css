@@ -1,1 +1,6 @@
 @charset "UTF-8";
+
+.main_img{width: 80%; margin: 0 auto;}
+.main_img img{margin: 20px 15%;}
+a{text-decoration: none;}
+
