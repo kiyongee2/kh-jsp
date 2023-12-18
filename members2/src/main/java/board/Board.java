@@ -13,11 +13,11 @@ public class Board implements Serializable{
 	private String content;
 	private Timestamp createDate;
 	private Timestamp modifyDate;
-	private int hit;
+	private int hit;         //조회수
 	private String filename;
 	private String id;
-	private int replycnt;
-	
+	private int replycnt;    //댓글수
+	private int voter;       //추천수(좋아요)
 	public int getBno() {
 		return bno;
 	}
@@ -71,5 +71,11 @@ public class Board implements Serializable{
 	}
 	public void setReplycnt(int replycnt) {
 		this.replycnt = replycnt;
+	}
+	public int getVoter() {
+		return voter;
+	}
+	public void setVoter(int voter) {
+		this.voter = voter;
 	}
 }

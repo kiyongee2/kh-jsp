@@ -33,10 +33,11 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+     <%--  <form class="d-flex" method="get" action="/productlist.do">
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
+        		name="kw" value="${param.kw}">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> --%>
     </div>
   </div>
 </nav>

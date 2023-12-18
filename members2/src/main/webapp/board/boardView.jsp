@@ -14,6 +14,7 @@
 	<div id="container">
 		<section id="board_detail">
 			<h2>게시글 상세 보기</h2>
+			${board.voter}
 				<table>
 					<tbody>
 						<tr>
@@ -48,7 +49,12 @@
 	           				</td>
 						</tr>
 						<tr>
-							<td><c:out value="조회수: ${board.hit}" /></td>
+							<td>
+								조회수: ${board.hit}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							    <a href="/vote.do?bno=${board.bno}" title="이 게시글이 마음에 들어요">
+									<i class="fa-regular fa-heart"></i>
+								</a>
+							</td>
 						</tr>
 						<tr>
 							<td>

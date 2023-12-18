@@ -29,6 +29,8 @@ D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3712267397
 \jwbook2\src\main\java
 D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1119486669.index
 \khboard\src\main\java
+D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1143344243.index
+\test\src\main\java
 D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3064845202.index
 \jwbook\src\main\java
 D:\yong-jakarta\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4225216317.index

@@ -134,6 +134,7 @@ public class BoardDAO {
 				board.setHit(rs.getInt("hit"));
 				board.setId(rs.getString("id"));
 				board.setReplycnt(rs.getInt("replycnt"));
+				board.setVoter(rs.getInt("voter"));
 				
 				boardList.add(board);  //개별 board 객체를 추가 저장
 			}
@@ -200,6 +201,7 @@ public class BoardDAO {
 				board.setHit(rs.getInt("hit"));
 				board.setFilename(rs.getString("filename"));
 				board.setId(rs.getString("id"));
+				board.setVoter(rs.getInt("voter"));
 				
 				//조회수 1증가(수정이 발생함)
 				int hit = rs.getInt("hit") + 1;
@@ -267,6 +269,22 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bno);
 			pstmt.setInt(2, bno);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	
+	//추천수(좋아요)
+	public void updateVoter(int bno) {
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "UPDATE board SET voter = voter + 1 "
+					+ "WHERE bno = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -54,28 +54,40 @@ public class MainController extends HttpServlet {
 		//세션 객체
 		HttpSession session = request.getSession();
 
-		
 		if(command.equals("/main.do")) {
 			nextPage = "/main.jsp";
 		}else if(command.equals("/productlist.do")) {
-			List<Product> products = pdao.getProductList();
+			//List<Product> products = pdao.getProductList();
+			//검색 처리
+			//_field, _kw - 임시변수 선언
+			String _field = request.getParameter("field");
+			String _kw = request.getParameter("kw");
+			
+			String field = ""; 
+			String kw = ""; 
+			
+			if(_field != null) { //쿼리값이 있는 경우
+				field = _field;
+			}else {
+				field = "p_name"; //쿼리값이 없는 경우(기본)
+			}
+			
+			if(_kw != null) { //쿼리값이 있는 경우
+				kw = _kw;
+			}else {
+				kw = "";  //쿼리값이 없는 경우(기본)
+			}
+		
+			List<Product> products = pdao.getProductList(field, kw);
+			
 			request.setAttribute("products", products);
+			request.setAttribute("field", field);
+			request.setAttribute("kw", kw);
 			nextPage = "/product/list.jsp";
-		}else if(command.equals("/productdetail.do")) {
-			String pid = request.getParameter("pid");
-			nextPage = "/product/detail.jsp";
 		}else if(command.equals("/productform.do")) {
 			nextPage = "/product/pform.jsp";
 		}else if(command.equals("/insertproduct.do")) {
 			//데이터 받기
-			/*String pid = request.getParameter("pid");
-			String pname = request.getParameter("pname");
-			int price = Integer.parseInt(request.getParameter("price"));
-			String description = request.getParameter("description");
-			String category = request.getParameter("category");
-			int pstock = Integer.parseInt(request.getParameter("pstock"));
-			String condition = request.getParameter("condition");*/
-			
 			String realFolder = "D:/yong-jakarta/Market/src/main/webapp/upload";
 
 			MultipartRequest multi = new MultipartRequest(request, realFolder,

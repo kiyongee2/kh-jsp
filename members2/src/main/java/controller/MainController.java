@@ -281,6 +281,9 @@ public class MainController extends HttpServlet {
 			
 			//게시글 수정 처리
 			boardDAO.updateBoard(board);
+		}else if(command.equals("/vote.do")) {
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			boardDAO.updateVoter(bno);
 		}
 		
 		//댓글
@@ -323,7 +326,7 @@ public class MainController extends HttpServlet {
 				|| command.equals("/updateBoard.do")) {
 			response.sendRedirect("/boardList.do");
 		}else if(command.equals("/insertreply.do") || command.equals("/deletereply.do")
-				|| command.equals("/updatereply.do")) {
+				|| command.equals("/updatereply.do") || command.equals("/vote.do")) {
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			response.sendRedirect("/boardView.do?bno=" + bno);
 		}else {

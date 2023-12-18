@@ -62,8 +62,8 @@
          				   </c:otherwise>
        				   </c:choose>
 					</td>
-					<td><c:out value="${board.hit}" /></td>
-					<td><c:out value="${board.id}" /></td>
+					<td>${board.hit}</td>
+					<td>${board.id}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
