@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 수정</title>
+<script src="../resources/js/validation.js"></script>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
@@ -14,7 +15,7 @@
 	   <h2 >상품 수정</h2>
 		 <div class="row">
 		    <form action="/updateproduct.do" method="post"
-		    		enctype="multipart/form-data">
+		    		enctype="multipart/form-data" name="newProduct">
 		    	<div class="form-group row my-3">
 		    		<label for="pid" class="col-2">상품 코드</label>
 		    		<div class="col-3">
@@ -81,7 +82,8 @@
 		    	</div>
 		    	<div class="form-group row my-3">
 		    		<div class="col-3">
-		    			<input type="submit" value="등록" class="btn btn-primary">
+		    			<button type="button" class="btn btn-primary" 
+		    					onclick="checkProduct()">수정</button>
 		    		</div>
 		    	</div>
 		    </form>

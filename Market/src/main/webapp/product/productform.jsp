@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 등록</title>
+<script src="../resources/js/validation.js"></script>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
@@ -14,7 +15,7 @@
 	   <h2 >상품 등록</h2>
 		 <div class="row">
 		    <form action="/insertproduct.do" method="post"
-		    		enctype="multipart/form-data">
+		    		enctype="multipart/form-data" name="newProduct">
 		    	<div class="form-group row my-3">
 		    		<label for="pid" class="col-2">상품 코드</label>
 		    		<div class="col-3">
@@ -67,7 +68,8 @@
 		    	</div>
 		    	<div class="form-group row my-3">
 		    		<div class="col-3">
-		    			<input type="submit" value="등록" class="btn btn-primary">
+		    			<input type="button" value="등록" class="btn btn-primary"
+		    					onclick="checkProduct()">
 		    		</div>
 		    	</div>
 		    </form>

@@ -88,7 +88,7 @@ public class MainController extends HttpServlet {
 			nextPage = "/product/productform.jsp";
 		}else if(command.equals("/insertproduct.do")) {
 			//데이터 받기
-			String realFolder = "D:/yong-jakarta/Market/src/main/webapp/upload";
+			String realFolder = "D:/yong-jakarta2/Market/src/main/webapp/upload";
 
 			MultipartRequest multi = new MultipartRequest(request, realFolder,
 					10*1024*1024, new DefaultFileRenamePolicy());
