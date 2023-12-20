@@ -85,7 +85,7 @@ public class MainController extends HttpServlet {
 			request.setAttribute("kw", kw);
 			nextPage = "/product/list.jsp";
 		}else if(command.equals("/productform.do")) {
-			nextPage = "/product/pform.jsp";
+			nextPage = "/product/productform.jsp";
 		}else if(command.equals("/insertproduct.do")) {
 			//데이터 받기
 			String realFolder = "D:/yong-jakarta/Market/src/main/webapp/upload";
@@ -127,7 +127,7 @@ public class MainController extends HttpServlet {
 			String pid = request.getParameter("pid");
 			Product product = pdao.getProduct(pid);
 			request.setAttribute("product", product);
-			nextPage = "/product/pinfo.jsp";
+			nextPage = "/product/productinfo.jsp";
 		}else if(command.equals("/editproduct.do")) {
 			List<Product> products = pdao.getProductList();
 			String edit = request.getParameter("edit");
@@ -140,6 +140,54 @@ public class MainController extends HttpServlet {
 			String pid = request.getParameter("pid");
 			pdao.deleteProduct(pid);
 			nextPage = "/editproduct.do?edit=delete";
+		}else if(command.equals("/updateform.do")) {
+			String pid = request.getParameter("pid");
+			Product product = pdao.getProduct(pid);
+			request.setAttribute("product", product);
+			nextPage = "/product/updateform.jsp";
+		}else if(command.equals("/updateproduct.do")) {
+			//데이터 받기
+			String realFolder = "D:/yong-jakarta2/Market/src/main/webapp/upload";
+
+			MultipartRequest multi = new MultipartRequest(request, realFolder,
+					10*1024*1024, new DefaultFileRenamePolicy());
+			
+			//일반 name 받아오기
+			String pid = multi.getParameter("pid");
+			String pname = multi.getParameter("pname");
+			pname = new String(pname.getBytes("8859_1"), "utf-8");  //한글 인코딩
+			int price = Integer.parseInt(multi.getParameter("price"));
+			String description = multi.getParameter("description");
+			description = new String(description.getBytes("8859_1"), "utf-8");
+			String category = multi.getParameter("category");
+			int pstock = Integer.parseInt(multi.getParameter("pstock"));
+			String condition = multi.getParameter("condition");
+			
+			//이미지 파일 받아오기
+			Enumeration<?> files = multi.getFileNames();
+			String pimage = "";
+			while(files.hasMoreElements()){
+				String name = (String)files.nextElement();
+				pimage = multi.getFilesystemName(name);
+			}
+			
+			Product p = new Product();
+			p.setPid(pid);
+			p.setPname(pname);
+			p.setPrice(price);
+			p.setDescription(description);
+			p.setCategory(category);
+			p.setPstock(pstock);
+			p.setCondition(condition);
+			p.setPimage(pimage);
+			
+			//이미지가 유, 무에 따른 처리
+			if(pimage != null) {
+				pdao.updateProduct(p);
+			}else {
+				pdao.updateProductNoImage(p);
+			}
+			nextPage = "/editproduct.do?edit=update";
 		}
 		
 		else if(command.equals("/addcart.do")) {

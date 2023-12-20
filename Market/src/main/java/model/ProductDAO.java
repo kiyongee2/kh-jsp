@@ -134,11 +134,57 @@ public class ProductDAO {
 	
 	//상품 삭제
 	public void deleteProduct(String pid) {
-		conn = JDBCUtil.getConnection();
-		String sql = "DELETE FROM product WHERE p_id = ?";
+		
 		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "DELETE FROM product WHERE p_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	
+	//상품 수정(이미지가 있는 경우)
+	public void updateProduct(Product product) {
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "update product set p_name=?, p_price=?, p_description=?, "
+					+ "p_category=?, p_stock=?, p_condition=?, p_image=? where p_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, product.getPname());
+			pstmt.setInt(2, product.getPrice());
+			pstmt.setString(3, product.getDescription());
+			pstmt.setString(4, product.getCategory());
+			pstmt.setLong(5, product.getPstock());
+			pstmt.setString(6, product.getCondition());
+			pstmt.setString(7, product.getPimage());
+			pstmt.setString(8, product.getPid());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	
+	//상품 수정(이미지가 없는 경우)
+	public void updateProductNoImage(Product product) {
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "update product set p_name=?, p_price=?, p_description=?, "
+					+ "p_category=?, p_stock=?, p_condition=? where p_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, product.getPname());
+			pstmt.setInt(2, product.getPrice());
+			pstmt.setString(3, product.getDescription());
+			pstmt.setString(4, product.getCategory());
+			pstmt.setLong(5, product.getPstock());
+			pstmt.setString(6, product.getCondition());
+			pstmt.setString(7, product.getPid());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

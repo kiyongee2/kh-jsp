@@ -33,11 +33,14 @@
           </ul>
         </li>
       </ul>
-     <%--  <form class="d-flex" method="get" action="/productlist.do">
-        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
-        		name="kw" value="${param.kw}">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> --%>
+      <form action="" method="get" class="d-flex">
+		<select name="field" class="form-select">
+			<option ${(field eq "p_name")?"selected":""} value="p_name">상품명</option>
+		    <option ${(field eq "p_category")?"selected":""} value="p_category">분류</option>
+		</select>
+	    <input type="search" name="kw" value="${kw}" class="form-control me-2">
+	    <button type="submit" class="btn btn-outline-success">검색</button>
+	  </form>
     </div>
   </div>
 </nav>

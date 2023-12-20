@@ -12,15 +12,6 @@
 <body>
 	<jsp:include page="../header.jsp" />
 	<div class="container my-3">
-		<form action="" method="get" class="search_form">
-			<select name="field" class="sel_field">
-				<option ${(field eq "p_name")?"selected":""} value="p_name">상품명</option>
-			    <option ${(field eq "p_category")?"selected":""} value="p_category">분류</option>
-			</select>
-		    <input type="text" name="kw" value="${param.kw}" class="in_kw">
-		    <button type="submit">검색</button>
-		</form>
-
 	   <h2>상품 목록</h2>
 		 <div class="row" align="center">
 		    <c:if test="${empty products}">
