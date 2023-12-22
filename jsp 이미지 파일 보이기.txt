@@ -1,0 +1,4 @@
+이미지 파일 보이기
+preferences > workspace
+1.Refresh using native hooks or polling
+2.Save automatically before manual build
